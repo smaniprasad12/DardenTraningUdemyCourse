@@ -47,8 +47,7 @@ public class UserController {
             responseCode = "200",
             description = "HTTP Status 200 SUCCESS"
     )
-    // build get user by id REST API
-    // http://localhost:8080/api/users/1
+ 
     @GetMapping("{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable("id") Long userId){
         UserDto user = userService.getUserById(userId);
@@ -63,8 +62,7 @@ public class UserController {
             responseCode = "200",
             description = "HTTP Status 200 SUCCESS"
     )
-    // Build Get All Users REST API
-    // http://localhost:8080/api/users
+  
     @GetMapping
     public ResponseEntity<List<UserDto>> getAllUsers(){
         List<UserDto> users = userService.getAllUsers();
@@ -79,9 +77,9 @@ public class UserController {
             responseCode = "200",
             description = "HTTP Status 200 SUCCESS"
     )
-    // Build Update User REST API
+   
     @PutMapping("{id}")
-    // http://localhost:8080/api/users/1
+ 
     public ResponseEntity<UserDto> updateUser(@PathVariable("id") Long userId,
                                            @RequestBody @Valid UserDto user){
         user.setId(userId);
@@ -97,7 +95,7 @@ public class UserController {
             responseCode = "200",
             description = "HTTP Status 200 SUCCESS"
     )
-    // Build Delete User REST API
+    
     @DeleteMapping("{id}")
     public ResponseEntity<String> deleteUser(@PathVariable("id") Long userId){
         userService.deleteUser(userId);
