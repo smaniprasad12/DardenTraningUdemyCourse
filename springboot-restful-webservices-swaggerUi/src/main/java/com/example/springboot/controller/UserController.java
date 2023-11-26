@@ -32,7 +32,6 @@ public class UserController {
             responseCode = "201",
             description = "HTTP Status 201 CREATED"
     )
-    // build create User REST API
     @PostMapping
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto user){
         UserDto savedUser = userService.createUser(user);
