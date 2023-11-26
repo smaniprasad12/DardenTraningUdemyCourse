@@ -1,0 +1,59 @@
+package com.example.EmployeeDemo;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+
+import org.hamcrest.CoreMatchers;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
+import org.mockito.BDDMockito;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import com.example.EmployeeDemo.model.Employee;
+import com.example.EmployeeDemo.services.EmployeeService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@WebMvcTest
+class EmployeeDemoApplicationTests {
+
+	@Autowired
+	private MockMvc mockMvc;
+	@MockBean
+	private EmployeeService employeeService;
+	@Autowired
+	private ObjectMapper objectMapper;
+	
+	public void CreateEmployee() throws Exception {
+		Employee employee = Employee.builder()
+				.id(1)
+				.firstName("Sai")
+				.lastName("Mukesh")
+				.role("Analyst")
+				.build();
+				
+		
+
+		Mockito.when(employeeService.addEmployee(Mockito.any(Employee.class))).thenReturn("Employee");
+		
+		ResultActions response = mockMvc.perform(post("/api/employees")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(employee)));
+		
+		response.andExpect(MockMvcResultMatchers.status().isCreated())
+				.andExpect(MockMvcResultMatchers.jsonPath("$.id", CoreMatchers.is(employee.getId())))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.firstName", CoreMatchers.is(employee.getFirstName())))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.lastName", CoreMatchers.is(employee.getLastName())))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.role", CoreMatchers.is(employee.getRole())));
+			
+	}
+	
+	
+
+}
