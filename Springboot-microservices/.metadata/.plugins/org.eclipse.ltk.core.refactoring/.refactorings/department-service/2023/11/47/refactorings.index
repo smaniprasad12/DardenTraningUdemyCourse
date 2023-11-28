@@ -1,0 +1,15 @@
+1700900347945	Rename package 'com.example.employeeservice.controller'
+1700900382267	Rename package 'com.example.employeeservice.Dto'
+1700900406377	Rename package 'com.example.employeeservice.entity'
+1700900422763	Rename package 'com.example.employeeservice.repository'
+1700900437932	Rename package 'com.example.employeeservice.service'
+1700900459901	Rename type 'EmployeeController'
+1700900480259	Rename type 'EmployeeRepository'
+1700900528038	Rename type 'EmployeeService'
+1700900566363	Rename type 'EmployeeDto'
+1700900579116	Rename type 'Employee'
+1700900679205	Rename type 'EmployeeServiceImpl'
+1700901904001	Delete element
+1700902902387	Delete elements
+1700903585762	Delete element
+1700920450571	Delete element

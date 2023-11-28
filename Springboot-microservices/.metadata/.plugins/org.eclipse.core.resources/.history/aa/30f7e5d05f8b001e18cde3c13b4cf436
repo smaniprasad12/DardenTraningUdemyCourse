@@ -1,0 +1,5 @@
+package com.example.employeeservice.Dto;
+
+public class EmployeeDto {
+
+}

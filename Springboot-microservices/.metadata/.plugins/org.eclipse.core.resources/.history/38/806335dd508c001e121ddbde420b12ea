@@ -1,0 +1,5 @@
+package com.example.organizationservice.entity;
+
+public class Organization {
+
+}

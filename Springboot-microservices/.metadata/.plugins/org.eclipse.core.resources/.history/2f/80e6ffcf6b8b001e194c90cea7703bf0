@@ -1,0 +1,9 @@
+package com.example.departmentservice.service;
+
+import com.example.departmentservice.Dto.EmployeeDto;
+
+public interface DepartmentService {
+	
+	EmployeeDto saveEmployee(EmployeeDto employeeDto);
+
+}

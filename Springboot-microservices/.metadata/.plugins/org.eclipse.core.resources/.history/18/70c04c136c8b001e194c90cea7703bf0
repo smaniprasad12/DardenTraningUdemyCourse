@@ -1,0 +1,39 @@
+package com.example.departmentservice.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import com.example.departmenteservice.repository.DepartmentRepository;
+import com.example.departmentservice.Dto.DepartmentDto;
+import com.example.departmentservice.entity.Department;
+import com.example.departmentservice.service.DepartmentService;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class EmployeeServiceImpl implements DepartmentService {
+
+	private DepartmentRepository departmentRepository;
+	
+	@Override
+	public DepartmentDto saveEmployee(DepartmentDto departmentDto) {
+		
+		Department department = new Department(
+			departmentDto.getId(),
+			departmentDto.getFirstName(),
+			departmentDto.getLastName(),
+			departmentDto.getEmail()
+			);	
+		Department savedEmployee = departmentRepository.save(department);
+		
+		DepartmentDto savedEmployeeDto = new DepartmentDto(
+				savedEmployee.getId(),
+				savedEmployee.getFirstName(),
+				savedEmployee.getLastName(),
+				savedEmployee.getEmail()
+				);
+		
+		return savedEmployeeDto;
+	}
+
+}

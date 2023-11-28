@@ -1,0 +1,5 @@
+package com.example.departmenteservice.repository;
+
+public interface DepartmentRepository {
+
+}
